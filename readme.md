@@ -26,8 +26,6 @@ import Hyperspeed from "@hyperspeeed/api";
 const hyper_speed = new Hyperspeed({
   organization: YOUR_ORGANIZATION_ID,
   api_key: "YOUR_API_KEY",
-  // Optional: Set a custom base URL if needed
-  // baseURL: 'https://your-api-domain.com/api/v2',
 });
 ```
 
