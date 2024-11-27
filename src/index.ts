@@ -1,27 +1,28 @@
 import Hyperspeed from "./lib/hyperspeed";
 import {
-  hyperSpeedImage,
-  hyperSpeedImageGallery,
-  hyperSpeedJson,
-  hyperSpeedCustomJson,
-  hyperSpeedCollection,
+  HyperspeedDataImage,
+  HyperspeedDataImageGallery,
+  HyperspeedDataJSON,
+  HyperspeedDataCustomJSON,
+  HyperspeedCollection,
   collectionCount,
-  hyperSpeedContent,
-  hyperSpeedCollectionPagination,
-  hyperSpeedPageContent,
+  HyperspeedContent,
+  HyperspeedContentPagination,
+  HyperspeedContentSingle,
 } from "./types/common";
-import { MessagePayload } from "./lib/messages";
+import { MessagePayload, MessageResponse } from "./lib/messages";
 
 export default Hyperspeed;
 export type {
-  hyperSpeedImage,
-  hyperSpeedImageGallery,
-  hyperSpeedJson,
-  hyperSpeedCustomJson,
-  hyperSpeedCollection,
+  HyperspeedDataImage,
+  HyperspeedDataImageGallery,
+  HyperspeedDataJSON,
+  HyperspeedDataCustomJSON,
+  HyperspeedCollection,
   collectionCount,
-  hyperSpeedContent,
-  hyperSpeedCollectionPagination,
+  HyperspeedContent,
+  HyperspeedContentPagination,
   MessagePayload,
-  hyperSpeedPageContent,
+  MessageResponse,
+  HyperspeedContentSingle,
 };

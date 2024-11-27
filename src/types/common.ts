@@ -1,22 +1,22 @@
-export type hyperSpeedImage = {
+export type HyperspeedDataImage = {
   url: string;
   alt_text?: string;
 };
-export type hyperSpeedImageGallery = {
+export type HyperspeedDataImageGallery = {
   url: string;
   alt_text?: string;
 }[];
 
-export type hyperSpeedJson = {
+export type HyperspeedDataJSON = {
   value: string;
   trait_type: string;
 };
 
-export type hyperSpeedCustomJson<T extends string | number | symbol> = {
+export type HyperspeedDataCustomJSON<T extends string | number | symbol> = {
   [key in T]: string;
 };
 
-export type hyperSpeedCollection = {
+export type HyperspeedCollection = {
   id: number;
   created_at: string;
   description: string;
@@ -33,11 +33,11 @@ export type collectionCount = {
   };
 };
 
-export type hyperSpeedContent<T> = {
+export type HyperspeedContent<T> = {
   created_at: string;
   author?: {
     name: string;
-    featured_image: hyperSpeedImage;
+    featured_image: HyperspeedDataImage;
   };
   description: string;
   id: number;
@@ -47,14 +47,14 @@ export type hyperSpeedContent<T> = {
   data: T;
 };
 
-export type hyperSpeedCollectionPagination<T> = {
+export type HyperspeedContentPagination<T> = {
   next_page: number | null;
   prev_page: number | null;
   total_pages: number;
-  data: hyperSpeedContent<T>[];
+  data: HyperspeedContent<T>[];
 };
 
-export type hyperSpeedPageContent<T> = {
+export type HyperspeedContentSingle<T> = {
   description: string;
   id: number;
   title: string;
@@ -74,7 +74,7 @@ export type hyperSpeedPageContent<T> = {
   comments: any[];
   author?: {
     name: string;
-    featured_image: hyperSpeedImage;
+    featured_image: HyperspeedDataImage;
   };
   collection: {
     id: number;

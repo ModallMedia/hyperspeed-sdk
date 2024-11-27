@@ -1,7 +1,7 @@
 // src/collections.ts
 
 import axios, { AxiosInstance } from "axios";
-import { hyperSpeedCollection } from "../types/common";
+import { HyperspeedCollection } from "../types/common";
 
 const url = "https://hyperspeedcms.com/api/v2";
 
@@ -34,9 +34,9 @@ export class Collections {
    * Fetches all collections.
    * Use case would be verifying Hyperspeed collection names or debugging integration.
    * This does *NOT* fetch the content within the collection.
-   * @returns {Promise<Array<Promise<hyperSpeedCollection> >>} - A promise that resolves to an array of collections.
+   * @returns {Promise<Array<Promise<HyperspeedCollection> >>} - A promise that resolves to an array of collections.
    */
-  async list(): Promise<Array<Promise<hyperSpeedCollection>>> {
+  async list(): Promise<Array<Promise<HyperspeedCollection>>> {
     try {
       const response = await this.axiosInstance.get("/");
       return response.data;
@@ -48,9 +48,9 @@ export class Collections {
    * Fetches a specific collection by name.
    * This does *NOT* fetch the content within the collection.
    * @param {string} name - The name of the collection.
-   * @returns {Promise<hyperSpeedCollection> } - The collection data.
+   * @returns {Promise<HyperspeedCollection> } - The collection data.
    */
-  async get(name: string): Promise<hyperSpeedCollection> {
+  async get(name: string): Promise<HyperspeedCollection> {
     try {
       const response = await this.axiosInstance.get(`/${name}`);
       return response.data;

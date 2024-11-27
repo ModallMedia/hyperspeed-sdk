@@ -2,9 +2,9 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import {
-  hyperSpeedCollectionPagination,
-  hyperSpeedContent,
-  hyperSpeedPageContent,
+  HyperspeedContentPagination,
+  HyperspeedContent,
+  HyperspeedContentSingle,
 } from "../types/common";
 
 const url = "https://hyperspeedcms.com/api/v2";
@@ -40,9 +40,9 @@ export class Contents {
    * Fetches all of the content from within a collection.
    * @template T
    * @param {string} name - The name of the collection.
-   * @returns {Promise<hyperSpeedContent<T>}>} - The collection data.
+   * @returns {Promise<HyperspeedContent<T>}>} - The collection data.
    */
-  async list<T = {}>(name: string): Promise<Array<hyperSpeedContent<T>>> {
+  async list<T = {}>(name: string): Promise<Array<HyperspeedContent<T>>> {
     try {
       const response = await this.axiosInstance.get(`/${name}/content`);
       return response.data;
@@ -58,14 +58,14 @@ export class Contents {
    * @param {number} limit - The number of items per page.
    * @param {number} page - The page number.
    * @param {AxiosRequestConfig} [options] - Additional Axios request options.
-   * @returns {Promise<hyperSpeedCollectionPagination<T>>} - The paginated response.
+   * @returns {Promise<HyperspeedContentPagination<T>>} - The paginated response.
    */
   async listPaginated<T = {}>(
     name: string,
     limit: number,
     page: number,
     options?: AxiosRequestConfig
-  ): Promise<hyperSpeedCollectionPagination<T>> {
+  ): Promise<HyperspeedContentPagination<T>> {
     try {
       const params = { limit, page };
       const response = await this.axiosInstance.get(`/${name}/paginated`, {
@@ -84,13 +84,13 @@ export class Contents {
    * @param {string} name - The collection name set on hyperspeed that contains the specified slug.
    * @param {string} slug - The slug of the content item.
    * @param {AxiosRequestConfig} [options] - Additional Axios request options.
-   * @returns {Promise<hyperSpeedPageContent<T>>} - The content item data.
+   * @returns {Promise<HyperspeedContentSingle<T>>} - The content item data.
    */
   async get<T = {}>(
     name: string,
     slug: string,
     options?: AxiosRequestConfig
-  ): Promise<hyperSpeedPageContent<T>> {
+  ): Promise<HyperspeedContentSingle<T>> {
     try {
       const response = await this.axiosInstance.get(
         `/${name}/${slug}`,
@@ -108,13 +108,13 @@ export class Contents {
    * @param {string} name - The name of the collection.
    * @param {number} [limit=1] - The number of items to fetch.
    * @param {AxiosRequestConfig} [options] - Additional Axios request options.
-   * @returns {Promise<Array<hyperSpeedContent<T>>>} - An array of content items.
+   * @returns {Promise<Array<HyperspeedContent<T>>>} - An array of content items.
    */
   async listRandom<T = {}>(
     name: string,
     limit: number = 1,
     options?: AxiosRequestConfig
-  ): Promise<Array<hyperSpeedContent<T>>> {
+  ): Promise<Array<HyperspeedContent<T>>> {
     try {
       const params = { limit };
       const response = await this.axiosInstance.get(`/${name}/random`, {
