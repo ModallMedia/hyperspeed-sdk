@@ -269,7 +269,6 @@ When initializing the Hyperspeed SDK, you can pass the following configuration o
 const hyper_speed = new Hyperspeed({
   organization: 21,
   api_key: "your_api_key",
-  baseURL: "https://api.yourdomain.com/api/v2",
 });
 ```
 
