@@ -51,7 +51,7 @@ export type hyperSpeedCollectionPagination<T> = {
   next_page: number | null;
   prev_page: number | null;
   total_pages: number;
-  data: hyperSpeedCollection & { contents: hyperSpeedContent<T>[] };
+  data: hyperSpeedContent<T>[];
 };
 
 export type hyperSpeedPageContent<T> = {

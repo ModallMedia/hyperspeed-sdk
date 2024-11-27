@@ -1,6 +1,8 @@
 // src/hyperspeed.ts
 
 import { Collections } from "./collection";
+import { Contents } from "./content";
+import { Messages } from "./messages";
 
 interface HyperspeedConfig {
   organization: number;
@@ -15,6 +17,8 @@ export class Hyperspeed {
   private api_key: string;
   private organization: number;
   collections: Collections;
+  content: Contents;
+  messages: Messages;
 
   /**
    * Creates an instance of Hyperspeed.
@@ -25,6 +29,8 @@ export class Hyperspeed {
     this.organization = config.organization;
 
     this.collections = new Collections(this.api_key, this.organization);
+    this.content = new Contents(this.api_key, this.organization);
+    this.messages = new Messages(this.api_key, this.organization);
   }
 }
 
