@@ -1,4 +1,4 @@
-# Hyperspeed SDK
+# Hyperspeed SDK `V1.0.0`
 
 Javascript client library for the Hyperspeed API.
 
