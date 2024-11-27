@@ -29,7 +29,6 @@
     "@babel/preset-typescript": "^7.26.0",
     "@types/axios": "^0.14.4",
     "@types/node": "^22.10.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "repository": {
