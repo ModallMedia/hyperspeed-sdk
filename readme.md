@@ -1,4 +1,3 @@
-````markdown
 # Hyperspeed SDK
 
 Javascript client library for the Hyperspeed API.
@@ -8,7 +7,6 @@ Javascript client library for the Hyperspeed API.
 ```bash
 npm install @hyperspeeed/api
 ```
-````
 
 ## 🚀 Getting Started
 
