@@ -1,10 +1,14 @@
 {
-  "name": "@hyperspeeed/api",
+  "name": "@hyperspeed/api",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "description": "Javascript client library for the Hyperspeed API",
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "main": "dist/hyperspeed.js",
   "publishConfig": {
     "access": "public"
   },
@@ -27,5 +31,13 @@
     "@types/node": "^22.10.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ModallMedia/hyperspeed-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ModallMedia/hyperspeed-sdk/issues"
+  },
+  "homepage": "https://github.com/ModallMedia/hyperspeed-sdk#readme"
 }

@@ -300,11 +300,3 @@ Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTIN
 ## 📄 Changelog
 
 See the [CHANGELOG.md](CHANGELOG.md) file for details.
-
-## 📫 Contact
-
-If you have any questions or need further assistance, feel free to open an issue or contact the maintainers.
-
-```
-
-```
