@@ -293,10 +293,6 @@ const response = await hyper_speed.collections.get("BlogPosts", {
 
 [MIT License](LICENSE)
 
-## 🤝 Contributing
-
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) before getting started.
-
 ## 📄 Changelog
 
 See the [CHANGELOG.md](CHANGELOG.md) file for details.
