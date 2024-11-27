@@ -5,7 +5,7 @@ Javascript client library for the Hyperspeed API.
 ## 📦 Installation
 
 ```bash
-npm install @hyperspeeed/api
+npm install @hyperspeed/api
 ```
 
 ## 🚀 Getting Started
@@ -15,9 +15,9 @@ Here's how to initialize the Hyperspeed SDK and make your first API calls.
 ### Import the Hyperspeed Class
 
 ```javascript
-import Hyperspeed from "@hyperspeeed/api";
+import Hyperspeed from "@hyperspeed/api";
 // or, if using CommonJS
-// const Hyperspeed = require('@hyperspeeed/api').default;
+// const Hyperspeed = require('@hyperspeed/api').default;
 ```
 
 ### Initialize the Hyperspeed Instance
