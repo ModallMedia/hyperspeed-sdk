@@ -3,7 +3,7 @@
 import axios, { AxiosInstance } from "axios";
 
 const url = "https://hyperspeedcms.com/api/v2";
-interface MessagePayload {
+export interface MessagePayload {
   email: string;
   first_name?: string;
   last_name?: string;

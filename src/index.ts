@@ -10,6 +10,7 @@ import {
   hyperSpeedCollectionPagination,
   hyperSpeedPageContent,
 } from "./types/common";
+import { MessagePayload } from "./lib/messages";
 
 export default Hyperspeed;
 export type {
@@ -21,5 +22,6 @@ export type {
   collectionCount,
   hyperSpeedContent,
   hyperSpeedCollectionPagination,
+  MessagePayload,
   hyperSpeedPageContent,
 };
