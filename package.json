@@ -1,0 +1,31 @@
+{
+  "name": "@hyperspeeed/api",
+  "description": "Javascript client library for the Hyperspeed API",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/hyperspeed.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npx tsc && babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "deploy": "npm run build",
+    "postdeploy": "npm publish"
+  },
+  "keywords": [],
+  "author": "Modall",
+  "dependencies": {
+    "axios": "^1.7.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-typescript": "^7.26.0",
+    "@types/axios": "^0.14.4",
+    "@types/node": "^22.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
