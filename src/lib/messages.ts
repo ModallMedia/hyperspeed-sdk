@@ -9,7 +9,7 @@ export interface MessagePayload {
   last_name?: string;
   phone_number?: string;
   message?: string;
-  other_fields?: Array<{ [key: string]: string }>;
+  other_fields?: { [key: string]: string };
 }
 
 export interface MessageSuccessResponse {
@@ -54,6 +54,12 @@ export class Messages {
    * @returns {Promise<MessageResponse>} - A promise that resolves to the API response.
    */
   async create(data: MessagePayload): Promise<MessageResponse> {
+    const test: MessagePayload = {
+      email: "",
+      first_name: "",
+      last_name: "",
+      phone_number: "",
+    };
     try {
       const response = await this.axiosInstance.post("/", data);
       return response.data;
