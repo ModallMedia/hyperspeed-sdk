@@ -113,10 +113,11 @@ export class Contents {
   async listRandom<T = {}>(
     name: string,
     limit: number = 1,
+    exclude?: string,
     options?: AxiosRequestConfig
   ): Promise<Array<HyperspeedContent<T>>> {
     try {
-      const params = { limit };
+      const params = { limit, exclude };
       const response = await this.axiosInstance.get(`/${name}/random`, {
         params,
         ...options,

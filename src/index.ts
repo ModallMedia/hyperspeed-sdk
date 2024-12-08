@@ -11,10 +11,11 @@ import {
   HyperspeedContentSingle,
 } from "./types/common";
 import { MessagePayload, MessageResponse } from "./lib/messages";
-
+import { CommentPayload } from "./lib/comments";
 export default Hyperspeed;
 export type {
   HyperspeedDataImage,
+  CommentPayload,
   HyperspeedDataImageGallery,
   HyperspeedDataJSON,
   HyperspeedDataCustomJSON,

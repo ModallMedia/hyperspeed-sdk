@@ -1,6 +1,7 @@
 // src/hyperspeed.ts
 
 import { Collections } from "./collection";
+import { Comment } from "./comments";
 import { Contents } from "./content";
 import { Messages } from "./messages";
 
@@ -19,6 +20,7 @@ export class Hyperspeed {
   collections: Collections;
   content: Contents;
   messages: Messages;
+  comments: Comment;
 
   /**
    * Creates an instance of Hyperspeed.
@@ -31,6 +33,7 @@ export class Hyperspeed {
     this.collections = new Collections(this.api_key, this.organization);
     this.content = new Contents(this.api_key, this.organization);
     this.messages = new Messages(this.api_key, this.organization);
+    this.comments = new Comment(this.api_key, this.organization);
   }
 }
 

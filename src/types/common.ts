@@ -54,6 +54,19 @@ export type HyperspeedContentPagination<T> = {
   data: HyperspeedContent<T>[];
 };
 
+type Comment = {
+  id: number;
+  text: string;
+  image_url: string | null;
+  author: string;
+  created_at: Date;
+  parent_id: number | null;
+  content_id: number;
+};
+
+interface CommentNode extends Comment {
+  replies: CommentNode[];
+}
 export type HyperspeedContentSingle<T> = {
   description: string;
   id: number;
@@ -71,7 +84,7 @@ export type HyperspeedContentSingle<T> = {
   html: string;
   created_at: string;
   updated_at: string;
-  comments: any[];
+  comments: CommentNode[];
   author?: {
     name: string;
     featured_image: HyperspeedDataImage;

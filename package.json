@@ -6,15 +6,15 @@
     "dist"
   ],
   "description": "Javascript client library for the Hyperspeed API",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "type": "module",
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "build": "npx tsc && babel src --out-dir dist --extensions \".ts,.tsx\"",
     "deploy": "npm run build",
+    "build": "npx tsc && babel src --out-dir dist --extensions \".ts,.tsx\"",
     "postdeploy": "npm publish"
   },
   "keywords": [],
