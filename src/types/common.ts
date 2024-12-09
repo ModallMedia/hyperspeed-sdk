@@ -24,6 +24,7 @@ export type HyperspeedCollection = {
   name: string;
   organization_id: number;
   page_content: boolean;
+  path_prefix: string;
   updated_at: string;
 };
 
