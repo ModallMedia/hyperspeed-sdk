@@ -36,7 +36,7 @@ export class Collections {
    * This does *NOT* fetch the content within the collection.
    * @returns {Promise<Array<Promise<HyperspeedCollection> >>} - A promise that resolves to an array of collections.
    */
-  async list(): Promise<Array<Promise<HyperspeedCollection>>> {
+  async list(): Promise<HyperspeedCollection[]> {
     try {
       const response = await this.axiosInstance.get("/");
       return response.data;
