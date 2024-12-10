@@ -45,10 +45,9 @@ export class Collections {
     }
   }
   /**
-   * Fetches all collections.
-   * Use case would be verifying Hyperspeed collection names or debugging integration.
-   * This does *NOT* fetch the content within the collection.
-   * @returns {Promise<Array<Promise<HyperspeedCollection> >>} - A promise that resolves to an array of collections.
+   * Fetches an array of URLs for sitemap generation.
+   * Will not work correctly unless the collection path is accurately set on hyperspeed.
+   * @returns {Promise<{ url: string }[]>} - A promise that resolves to an array of {url: string}.
    */
   async getSitemap(): Promise<{ url: string }[]> {
     try {
