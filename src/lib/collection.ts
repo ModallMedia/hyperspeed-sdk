@@ -45,6 +45,20 @@ export class Collections {
     }
   }
   /**
+   * Fetches all collections.
+   * Use case would be verifying Hyperspeed collection names or debugging integration.
+   * This does *NOT* fetch the content within the collection.
+   * @returns {Promise<Array<Promise<HyperspeedCollection> >>} - A promise that resolves to an array of collections.
+   */
+  async getSitemap(): Promise<{ url: string }[]> {
+    try {
+      const response = await this.axiosInstance.get("/sitemap");
+      return response.data;
+    } catch (error: any) {
+      throw this.handleError(error);
+    }
+  }
+  /**
    * Fetches a specific collection by name.
    * This does *NOT* fetch the content within the collection.
    * @param {string} name - The name of the collection.
