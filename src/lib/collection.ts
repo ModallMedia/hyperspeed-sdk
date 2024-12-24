@@ -47,9 +47,9 @@ export class Collections {
   /**
    * Fetches an array of URLs for sitemap generation.
    * Will not work correctly unless the collection path is accurately set on hyperspeed.
-   * @returns {Promise<{ url: string }[]>} - A promise that resolves to an array of {url: string}.
+   * @returns {Promise<{ url: string, updated_at: string }[]>} - A promise that resolves to an array of {url: string}.
    */
-  async getSitemap(): Promise<{ url: string }[]> {
+  async getSitemap(): Promise<{ url: string; updated_at: string }[]> {
     try {
       const response = await this.axiosInstance.get("/sitemap");
       return response.data;
