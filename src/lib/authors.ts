@@ -44,7 +44,7 @@ export class Authors {
     });
   }
   /**
-   * Fetches all collections.
+   * Fetches all auhtors.
    * Use case would be verifying Hyperspeed collection names or debugging integration.
    * This does *NOT* fetch the content within the collection.
    * @returns {Promise<AuthorItem[]>} - A promise that resolves to an array of collections.
