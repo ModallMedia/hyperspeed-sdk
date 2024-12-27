@@ -40,7 +40,7 @@ export type HyperspeedContent<T> = {
     name: string;
     featured_image: HyperspeedDataImage;
   };
-  collection_category: string[];
+  content_category: string[];
   description: string;
   id: number;
   slug: string;
