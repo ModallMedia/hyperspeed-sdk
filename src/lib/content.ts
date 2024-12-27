@@ -78,7 +78,7 @@ export class Contents {
     }
   }
   /**
-   * Fetches paginated content items from a collection.
+   * Fetches paginated content items from a specific category within a content collection.
    * @template T - The custom fields for the content item. Accesible via the `data` property.
    * @param {string} name - The name of the collection.
    * @param {number} limit - The number of items per page.
@@ -102,6 +102,28 @@ export class Contents {
           ...options,
         }
       );
+      return response.data;
+    } catch (error: any) {
+      throw this.handleError(error);
+    }
+  }
+  /**
+   * Fetches paginated content items from a specific category within a content collection.
+   * @template T - The custom fields for the content item. Accesible via the `data` property.
+   * @param {string} name - The name of the collection.
+   * @param {number} limit - The number of items per page.
+   * @param {number} page - The page number.
+   * @param {AxiosRequestConfig} [options] - Additional Axios request options.
+   * @returns {Promise<HyperspeedContentPagination<T>>} - The paginated response.
+   */
+  async listCategories<T = {}>(
+    name: string,
+    options?: AxiosRequestConfig
+  ): Promise<HyperspeedContentPagination<T>> {
+    try {
+      const response = await this.axiosInstance.get(`/${name}/category`, {
+        ...options,
+      });
       return response.data;
     } catch (error: any) {
       throw this.handleError(error);
