@@ -18,10 +18,6 @@ type AuthorItem = {
   created_at: string;
 };
 
-type AuthorPaginated<T = {}> = AuthorItem & {
-  content: HyperspeedContentPagination<T>;
-};
-
 /**
  * Class representing the Collections resource.
  */
