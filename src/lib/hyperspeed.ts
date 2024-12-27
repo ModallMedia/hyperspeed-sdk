@@ -1,5 +1,6 @@
 // src/hyperspeed.ts
 
+import { Authors } from "./authors";
 import { Collections } from "./collection";
 import { Comment } from "./comments";
 import { Contents } from "./content";
@@ -21,6 +22,7 @@ export class Hyperspeed {
   content: Contents;
   messages: Messages;
   comments: Comment;
+  authors: Authors;
 
   /**
    * Creates an instance of Hyperspeed.
@@ -31,6 +33,7 @@ export class Hyperspeed {
     this.organization = config.organization;
 
     this.collections = new Collections(this.api_key, this.organization);
+    this.authors = new Authors(this.api_key, this.organization);
     this.content = new Contents(this.api_key, this.organization);
     this.messages = new Messages(this.api_key, this.organization);
     this.comments = new Comment(this.api_key, this.organization);

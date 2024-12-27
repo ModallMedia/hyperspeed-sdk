@@ -8,6 +8,20 @@ import {
 
 const url = "https://hyperspeedcms.com/api/v2";
 
+type AuthorItem = {
+  id: number;
+  name: string;
+  description: string;
+  organization_id: number;
+  media_id: number;
+  updated_at: string;
+  created_at: string;
+};
+
+type AuthorPaginated<T = {}> = AuthorItem & {
+  content: HyperspeedContentPagination<T>;
+};
+
 /**
  * Class representing the Collections resource.
  */
@@ -37,9 +51,9 @@ export class Authors {
    * Fetches all collections.
    * Use case would be verifying Hyperspeed collection names or debugging integration.
    * This does *NOT* fetch the content within the collection.
-   * @returns {Promise<Array<Promise<HyperspeedCollection> >>} - A promise that resolves to an array of collections.
+   * @returns {Promise<AuthorItem[]>} - A promise that resolves to an array of collections.
    */
-  async list(): Promise<HyperspeedCollection[]> {
+  async list(): Promise<AuthorItem[]> {
     try {
       const response = await this.axiosInstance.get("/");
       return response.data;
