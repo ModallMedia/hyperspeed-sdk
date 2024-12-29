@@ -154,10 +154,9 @@ export class Contents {
     }
   }
   /**
-   * Fetches a specific content item by slug within a collection.
-   * @template T - The custom fields for the content item. Accesible via the `data` property.
-   * @param {string} name - The collection name set on hyperspeed that contains the specified slug.
-   * @param {string} slug - The slug of the content item.
+   * Fetches a slug and collection path prefix from a given ID
+   * Primarily used for shortening URLs. ie. <link rel='shortlink' href='https://mywebsite.com/?id=14563' />
+   * @param {string} id - The content ID.
    * @param {AxiosRequestConfig} [options] - Additional Axios request options.
    * @returns {Promise<{collection: { path_prefix: string | null; }; slug: string; }>} - The content item data.
    */
