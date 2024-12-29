@@ -38,7 +38,11 @@ export type HyperspeedContent<T> = {
   created_at: string;
   author?: {
     name: string;
-    featured_image: HyperspeedDataImage;
+    featured_image?: HyperspeedDataImage;
+    description: string;
+    organization_id: number;
+    id: number;
+    media_id?: number;
   };
   content_category: string[];
   description: string;

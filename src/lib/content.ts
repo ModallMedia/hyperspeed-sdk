@@ -153,6 +153,30 @@ export class Contents {
       throw this.handleError(error);
     }
   }
+  /**
+   * Fetches a specific content item by slug within a collection.
+   * @template T - The custom fields for the content item. Accesible via the `data` property.
+   * @param {string} name - The collection name set on hyperspeed that contains the specified slug.
+   * @param {string} slug - The slug of the content item.
+   * @param {AxiosRequestConfig} [options] - Additional Axios request options.
+   * @returns {Promise<{collection: { path_prefix: string | null; }; slug: string; }>} - The content item data.
+   */
+  async getSlugFromID(
+    id: number,
+    options?: AxiosRequestConfig
+  ): Promise<{
+    collection: {
+      path_prefix: string | null;
+    };
+    slug: string;
+  }> {
+    try {
+      const response = await this.axiosInstance.get(`/content/${id}`, options);
+      return response.data;
+    } catch (error: any) {
+      throw this.handleError(error);
+    }
+  }
 
   /**
    * Fetches random content items from a specified collection without bias.
