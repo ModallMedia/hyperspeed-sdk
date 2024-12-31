@@ -2,25 +2,23 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import {
-  HyperspeedCollection,
   HyperspeedContentPagination,
+  HyperspeedDataImage,
 } from "../types/common";
 
 const url = "https://hyperspeedcms.com/api/v2";
 
-type AuthorItem = {
+export type AuthorItem = {
   id: number;
   name: string;
   description: string;
   organization_id: number;
   media_id: number;
+  featured_image?: HyperspeedDataImage;
   updated_at: string;
   created_at: string;
 };
 
-/**
- * Class representing the Collections resource.
- */
 export class Authors {
   private api_key: string;
   private organization: number;

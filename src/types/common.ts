@@ -1,3 +1,5 @@
+import { AuthorItem } from "../lib/authors";
+
 export type HyperspeedDataImage = {
   url: string;
   alt_text?: string;
@@ -57,6 +59,8 @@ export type HyperspeedContentPagination<T> = {
   next_page: number | null;
   prev_page: number | null;
   total_pages: number;
+  total_items: number;
+  created_at: string | null;
   data: HyperspeedContent<T>[];
 };
 
@@ -81,6 +85,7 @@ export type HyperspeedContentSingle<T> = {
   draft: boolean;
   archive: boolean;
   comments_enabled: boolean;
+  content_category: string[];
   collection_id: number;
   data: T;
   blocks: {
@@ -91,18 +96,6 @@ export type HyperspeedContentSingle<T> = {
   created_at: string;
   updated_at: string;
   comments: CommentNode[];
-  author?: {
-    name: string;
-    featured_image: HyperspeedDataImage;
-  };
-  collection: {
-    id: number;
-    name: string;
-    organization_id: number;
-    icon: string;
-    description: string;
-    page_content: boolean;
-    created_at: string;
-    updated_at: string;
-  };
+  author?: AuthorItem;
+  collection: HyperspeedCollection;
 };
