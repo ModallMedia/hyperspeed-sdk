@@ -60,7 +60,8 @@ export type HyperspeedContentPagination<T> = {
   prev_page: number | null;
   total_pages: number;
   total_items: number;
-  updated_at: string | null;
+  updated_at: string;
+  created_at: string;
   data: HyperspeedContent<T>[];
 };
 
