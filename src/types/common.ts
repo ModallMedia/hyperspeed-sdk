@@ -51,14 +51,7 @@ export type collectionCount = {
 
 export type HyperspeedContent<T> = {
   created_at: string;
-  author?: {
-    name: string;
-    featured_image?: HyperspeedDataImage;
-    description: string;
-    organization_id: number;
-    id: number;
-    media_id?: number;
-  };
+  author?: AuthorItem;
   content_category: string[];
   content_categories: Category[];
   description: string;

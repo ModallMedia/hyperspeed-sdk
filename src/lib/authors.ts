@@ -12,6 +12,7 @@ export type AuthorItem = {
   id: number;
   name: string;
   description: string;
+  slug: string;
   organization_id: number;
   media_id: number;
   featured_image?: HyperspeedDataImage;
