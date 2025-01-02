@@ -18,6 +18,19 @@ export type HyperspeedDataCustomJSON<T extends string | number | symbol> = {
   [key in T]: string;
 };
 
+export type Category = {
+  id: number;
+  name: string;
+  short_name: string;
+  organization_id: number;
+  slug: string;
+  description: string;
+  parent_id: number | null;
+  collection_id: number;
+  created_at: string;
+  updated_at: string;
+};
+
 export type HyperspeedCollection = {
   id: number;
   created_at: string;
@@ -47,6 +60,7 @@ export type HyperspeedContent<T> = {
     media_id?: number;
   };
   content_category: string[];
+  content_categories: Category[];
   description: string;
   id: number;
   slug: string;
@@ -59,6 +73,16 @@ export type HyperspeedContentPagination<T> = {
   next_page: number | null;
   prev_page: number | null;
   total_pages: number;
+  total_items: number;
+  updated_at: string;
+  created_at: string;
+  data: HyperspeedContent<T>[];
+};
+export type HyperspeedCategoryContentPagination<T> = {
+  next_page: number | null;
+  prev_page: number | null;
+  total_pages: number;
+  category: Category;
   total_items: number;
   updated_at: string;
   created_at: string;
@@ -85,6 +109,7 @@ export type HyperspeedContentSingle<T> = {
   slug: string;
   draft: boolean;
   archive: boolean;
+  content_categories: Category[];
   comments_enabled: boolean;
   content_category: string[];
   collection_id: number;

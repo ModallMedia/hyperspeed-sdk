@@ -5,6 +5,8 @@ import {
   HyperspeedContentPagination,
   HyperspeedContent,
   HyperspeedContentSingle,
+  HyperspeedCategoryContentPagination,
+  Category,
 } from "../types/common";
 
 const url = "https://hyperspeedcms.com/api/v2";
@@ -92,7 +94,7 @@ export class Contents {
     limit: number,
     page: number,
     options?: AxiosRequestConfig
-  ): Promise<HyperspeedContentPagination<T>> {
+  ): Promise<HyperspeedCategoryContentPagination<T>> {
     try {
       const params = { limit, page };
       const response = await this.axiosInstance.get(
@@ -119,7 +121,7 @@ export class Contents {
   async listCategories<T = {}>(
     name: string,
     options?: AxiosRequestConfig
-  ): Promise<HyperspeedContentPagination<T>> {
+  ): Promise<Category[]> {
     try {
       const response = await this.axiosInstance.get(`/${name}/category`, {
         ...options,
