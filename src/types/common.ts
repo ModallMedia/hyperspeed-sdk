@@ -39,6 +39,10 @@ export type HyperspeedCollection = {
   name: string;
   organization_id: number;
   page_content: boolean;
+  enable_author: boolean;
+  enable_comments: boolean;
+  enable_featured_posts: boolean;
+  enable_rating: boolean;
   path_prefix: string | null;
   updated_at: string;
 };
