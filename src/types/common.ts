@@ -87,6 +87,7 @@ type Comment = {
   text: string;
   image_url: string | null;
   author: string;
+  rating: number | null;
   created_at: Date;
   parent_id: number | null;
   content_id: number;

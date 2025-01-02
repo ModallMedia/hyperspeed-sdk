@@ -8,6 +8,7 @@ export interface CommentPayload {
   email: string;
   parent_id: number | null | undefined;
   comment: string;
+  rating?: 1 | 2 | 3 | 4 | 5;
 }
 
 export interface CommentSuccessResponse {
