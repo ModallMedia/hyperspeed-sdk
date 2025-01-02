@@ -118,7 +118,7 @@ export class Contents {
    * @param {AxiosRequestConfig} [options] - Additional Axios request options.
    * @returns {Promise<HyperspeedContentPagination<T>>} - The paginated response.
    */
-  async listCategories<T = {}>(
+  async listCategories(
     name: string,
     options?: AxiosRequestConfig
   ): Promise<Category[]> {
