@@ -49,7 +49,7 @@ export class Collections {
    * Will not work correctly unless the collection path is accurately set on hyperspeed.
    * @returns {Promise<{ url: string, updated_at: string }[]>} - A promise that resolves to an array of {url: string}.
    */
-  async getSitemap(): Promise<{ url: string; updated_at: string }[]> {
+  async getSitemap(): Promise<{ url: string; lastModified: string }[]> {
     try {
       const response = await this.axiosInstance.get("/sitemap");
       return response.data;
