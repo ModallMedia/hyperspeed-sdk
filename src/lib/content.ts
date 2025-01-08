@@ -118,6 +118,32 @@ export class Contents {
    * @param {AxiosRequestConfig} [options] - Additional Axios request options.
    * @returns {Promise<HyperspeedContentPagination<T>>} - The paginated response.
    */
+  async search<T = {}>(
+    q: string,
+    limit: number,
+    page: number,
+    options?: AxiosRequestConfig
+  ): Promise<HyperspeedCategoryContentPagination<T>> {
+    try {
+      const params = { limit, page, q: encodeURIComponent(q) };
+      const response = await this.axiosInstance.get(`/search`, {
+        params,
+        ...options,
+      });
+      return response.data;
+    } catch (error: any) {
+      throw this.handleError(error);
+    }
+  }
+  /**
+   * Fetches paginated content items from a specific category within a content collection.
+   * @template T - The custom fields for the content item. Accesible via the `data` property.
+   * @param {string} name - The name of the collection.
+   * @param {number} limit - The number of items per page.
+   * @param {number} page - The page number.
+   * @param {AxiosRequestConfig} [options] - Additional Axios request options.
+   * @returns {Promise<HyperspeedContentPagination<T>>} - The paginated response.
+   */
   async listCategories(
     name: string,
     options?: AxiosRequestConfig
@@ -149,18 +175,12 @@ export class Contents {
     limit?: number,
     options?: AxiosRequestConfig
   ): Promise<HyperspeedContentSingle<T>> {
-    let path = `/${name}/${slug}`;
-    if (page) {
-      path += `?page=${page}`;
-    } else {
-      path += `?page=1`;
-    }
-    if (limit) {
-      path += `&limit=${limit}`;
-    }
-
+    const params = { limit, page };
     try {
-      const response = await this.axiosInstance.get(path, options);
+      const response = await this.axiosInstance.get(`/${name}/${slug}`, {
+        params,
+        ...options,
+      });
       return response.data;
     } catch (error: any) {
       throw this.handleError(error);
