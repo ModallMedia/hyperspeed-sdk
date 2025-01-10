@@ -5,6 +5,7 @@ import { Collections } from "./collection";
 import { Comment } from "./comments";
 import { Contents } from "./content";
 import { Messages } from "./messages";
+import { Posts } from "./post";
 
 interface HyperspeedConfig {
   organization: number;
@@ -23,7 +24,7 @@ export class Hyperspeed {
   messages: Messages;
   comments: Comment;
   authors: Authors;
-
+  posts: Posts;
   /**
    * Creates an instance of Hyperspeed.
    * @param {HyperspeedConfig} config - Configuration options.
@@ -37,6 +38,7 @@ export class Hyperspeed {
     this.content = new Contents(this.api_key, this.organization);
     this.messages = new Messages(this.api_key, this.organization);
     this.comments = new Comment(this.api_key, this.organization);
+    this.posts = new Posts(this.api_key, this.organization);
   }
 }
 
