@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "declarationMap": true,
     "outDir": "./dist",
     "noImplicitAny": false,
     "module": "es6",
@@ -12,5 +13,5 @@
     "noEmit": false,
     "moduleResolution": "node"
   },
-  "include": ["./src/**/*", "./src/*"]
+  "include": ["./src/**/*", "./src/*", "./prisma/**/*"]
 }

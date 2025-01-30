@@ -1,24 +1,7 @@
 // src/collections.ts
-
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 const url = "https://hyperspeedcms.com/api/v3";
-
-type Props = {
-  select?: any;
-  include?: any;
-  where?: any;
-  orderBy?: any;
-  cursor?: any;
-  take?: any;
-  skip?: any;
-  distinct?: any;
-};
-
-type Create = {
-  data?: any;
-  include?: any;
-  select?: any;
-};
+import { Prisma } from "@prisma/client";
 export class AuthorsV3 {
   private api_key: string;
   private organization: number;
@@ -36,12 +19,17 @@ export class AuthorsV3 {
       },
     });
   }
-  async findFirst(props: Props) {
-    const response = await this.axiosInstance.post("/find-many", props);
+  async findFirst<T extends Prisma.authorFindFirstArgs>(
+    props: T
+  ): Promise<Prisma.authorGetPayload<T> | null> {
+    const response = await this.axiosInstance.post("/find-first", props);
     return response.data;
   }
-  async findMany(props: Props) {
-    const response = await this.axiosInstance.post(`/find-first`, props);
+
+  async findMany<T extends Prisma.authorFindManyArgs>(
+    props: T
+  ): Promise<Prisma.authorGetPayload<T>[]> {
+    const response = await this.axiosInstance.post(`/find-many`, props);
     return response.data;
   }
 }
@@ -62,15 +50,21 @@ export class ContentV3 {
       },
     });
   }
-  async findFirst(props: Props) {
-    const response = await this.axiosInstance.post("/find-many", props);
+  async findFirst<T extends Prisma.ContentFindFirstArgs>(
+    props: T
+  ): Promise<Prisma.ContentGetPayload<T> | null> {
+    const response = await this.axiosInstance.post("/find-first", props);
     return response.data;
   }
-  async findMany(props: Props) {
-    const response = await this.axiosInstance.post(`/find-first`, props);
+
+  async findMany<T extends Prisma.ContentFindManyArgs>(
+    props: T
+  ): Promise<Prisma.ContentGetPayload<T>[]> {
+    const response = await this.axiosInstance.post(`/find-many`, props);
     return response.data;
   }
 }
+
 export class CollectionsV3 {
   private api_key: string;
   private organization: number;
@@ -78,7 +72,6 @@ export class CollectionsV3 {
   constructor(api_key: string, organization: number) {
     this.api_key = api_key;
     this.organization = organization;
-    // Create an Axios instance with default headers
     this.axiosInstance = axios.create({
       baseURL: url + "/collections",
       headers: {
@@ -88,15 +81,20 @@ export class CollectionsV3 {
       },
     });
   }
-  async findFirst(props: Props) {
-    const response = await this.axiosInstance.post("/find-many", props);
+  async findFirst<T extends Prisma.CollectionFindFirstArgs>(
+    props: T
+  ): Promise<Prisma.CollectionGetPayload<T> | null> {
+    const response = await this.axiosInstance.post("/find-first", props);
     return response.data;
   }
-  async findMany(props: Props) {
-    const response = await this.axiosInstance.post(`/find-first`, props);
+  async findMany<T extends Prisma.CollectionFindManyArgs>(
+    props: T
+  ): Promise<Prisma.CollectionGetPayload<T>[]> {
+    const response = await this.axiosInstance.post(`/find-many`, props);
     return response.data;
   }
 }
+
 export class CategoriesV3 {
   private api_key: string;
   private organization: number;
@@ -104,7 +102,6 @@ export class CategoriesV3 {
   constructor(api_key: string, organization: number) {
     this.api_key = api_key;
     this.organization = organization;
-    // Create an Axios instance with default headers
     this.axiosInstance = axios.create({
       baseURL: url + "/categories",
       headers: {
@@ -114,12 +111,16 @@ export class CategoriesV3 {
       },
     });
   }
-  async findFirst(props: Props) {
-    const response = await this.axiosInstance.post("/find-many", props);
+  async findFirst<T extends Prisma.CategoryFindFirstArgs>(
+    props: T
+  ): Promise<Prisma.CategoryGetPayload<T> | null> {
+    const response = await this.axiosInstance.post("/find-first", props);
     return response.data;
   }
-  async findMany(props: Props) {
-    const response = await this.axiosInstance.post(`/find-first`, props);
+  async findMany<T extends Prisma.CategoryFindManyArgs>(
+    props: T
+  ): Promise<Prisma.CategoryGetPayload<T>[]> {
+    const response = await this.axiosInstance.post(`/find-many`, props);
     return response.data;
   }
 }
@@ -131,7 +132,6 @@ export class CommentsV3 {
   constructor(api_key: string, organization: number) {
     this.api_key = api_key;
     this.organization = organization;
-    // Create an Axios instance with default headers
     this.axiosInstance = axios.create({
       baseURL: url + "/comments",
       headers: {
@@ -141,15 +141,21 @@ export class CommentsV3 {
       },
     });
   }
-  async findFirst(props: Props) {
-    const response = await this.axiosInstance.post("/find-many", props);
+  async findFirst<T extends Prisma.CommentFindFirstArgs>(
+    props: T
+  ): Promise<Prisma.CommentGetPayload<T> | null> {
+    const response = await this.axiosInstance.post("/find-first", props);
     return response.data;
   }
-  async findMany(props: Props) {
-    const response = await this.axiosInstance.post(`/find-first`, props);
+  async findMany<T extends Prisma.CommentFindManyArgs>(
+    props: T
+  ): Promise<Prisma.CommentGetPayload<T>[]> {
+    const response = await this.axiosInstance.post(`/find-many`, props);
     return response.data;
   }
-  async create(props: Create) {
+  async create<T extends Prisma.CommentCreateArgs>(
+    props: T
+  ): Promise<Prisma.CommentGetPayload<T>> {
     const response = await this.axiosInstance.post(`/create`, props);
     return response.data;
   }

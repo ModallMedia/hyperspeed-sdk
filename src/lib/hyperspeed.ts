@@ -17,47 +17,57 @@ import {
 interface HyperspeedConfig {
   organization: number;
   api_key: string;
-  version?: number;
   baseURL?: string;
 }
 
 /**
- * The main Hyperspeed class for interacting with the Hyperspeed API.
+ * HyperspeedV2 - API Version 2
  */
-export class Hyperspeed {
+export class HyperspeedV2 {
   private api_key: string;
   private organization: number;
-  private version: number = 2; // Default API version
-  collections: Collections | CollectionsV3;
-  content: Contents | ContentV3;
-  categories?: CategoriesV3;
+
+  collections: Collections;
+  content: Contents;
   messages: Messages;
-  comments: Comment | CommentsV3;
-  authors: Authors | AuthorsV3;
+  comments: Comment;
+  authors: Authors;
   posts: Posts;
-  /**
-   * Creates an instance of Hyperspeed.
-   * @param {HyperspeedConfig} config - Configuration options.
-   */
+
   constructor(config: HyperspeedConfig) {
     this.api_key = config.api_key;
     this.organization = config.organization;
-    this.version = config.version;
-    if (config.version === 2) {
-      this.collections = new CollectionsV3(this.api_key, this.organization);
-      this.authors = new AuthorsV3(this.api_key, this.organization);
-      this.content = new ContentV3(this.api_key, this.organization);
-      this.comments = new CommentsV3(this.api_key, this.organization);
-      this.categories = new CategoriesV3(this.api_key, this.organization);
-    } else {
-      this.collections = new Collections(this.api_key, this.organization);
-      this.authors = new Authors(this.api_key, this.organization);
-      this.content = new Contents(this.api_key, this.organization);
-      this.messages = new Messages(this.api_key, this.organization);
-      this.comments = new Comment(this.api_key, this.organization);
-      this.posts = new Posts(this.api_key, this.organization);
-    }
+
+    this.collections = new Collections(this.api_key, this.organization);
+    this.authors = new Authors(this.api_key, this.organization);
+    this.content = new Contents(this.api_key, this.organization);
+    this.messages = new Messages(this.api_key, this.organization);
+    this.comments = new Comment(this.api_key, this.organization);
+    this.posts = new Posts(this.api_key, this.organization);
   }
 }
 
-export default Hyperspeed;
+/**
+ * HyperspeedV3 - API Version 3
+ */
+export class HyperspeedV3 {
+  private api_key: string;
+  private organization: number;
+
+  collections: CollectionsV3;
+  content: ContentV3;
+  comments: CommentsV3;
+  authors: AuthorsV3;
+  categories: CategoriesV3;
+
+  constructor(config: HyperspeedConfig) {
+    this.api_key = config.api_key;
+    this.organization = config.organization;
+
+    this.collections = new CollectionsV3(this.api_key, this.organization);
+    this.authors = new AuthorsV3(this.api_key, this.organization);
+    this.content = new ContentV3(this.api_key, this.organization);
+    this.comments = new CommentsV3(this.api_key, this.organization);
+    this.categories = new CategoriesV3(this.api_key, this.organization);
+  }
+}

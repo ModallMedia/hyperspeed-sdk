@@ -1,4 +1,4 @@
-import Hyperspeed from "./lib/hyperspeed";
+import { HyperspeedV2, HyperspeedV3 } from "./lib/hyperspeed";
 import {
   HyperspeedDataImage,
   HyperspeedDataImageGallery,
@@ -12,7 +12,9 @@ import {
 } from "./types/common";
 import { MessagePayload, MessageResponse } from "./lib/messages";
 import { CommentPayload } from "./lib/comments";
-export default Hyperspeed;
+import { PrismaClient } from "@prisma/client";
+export { PrismaClient };
+export { HyperspeedV2, HyperspeedV3 };
 export type {
   HyperspeedDataImage,
   CommentPayload,
