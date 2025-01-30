@@ -1,7 +1,8 @@
 // src/collections.ts
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 const url = "https://hyperspeedcms.com/api/v3";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../prisma-types";
+
 export class AuthorsV3 {
   private api_key: string;
   private organization: number;

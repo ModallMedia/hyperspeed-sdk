@@ -6,6 +6,7 @@
     "noImplicitAny": false,
     "module": "es6",
     "target": "es5",
+    "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "allowJs": true,
@@ -13,5 +14,5 @@
     "noEmit": false,
     "moduleResolution": "node"
   },
-  "include": ["./src/**/*", "./src/*", "./prisma/**/*"]
+  "include": ["./src/**/*", "./src/*"]
 }
