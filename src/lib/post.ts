@@ -1,13 +1,7 @@
 // src/content.ts
 
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import {
-  HyperspeedContentPagination,
-  HyperspeedContent,
-  HyperspeedContentSingle,
-  HyperspeedCategoryContentPagination,
-  Category,
-} from "../types/common";
+import { HyperspeedContentSingle } from "../types/common";
 
 const url = "https://hyperspeedcms.com/api/v2";
 
@@ -55,7 +49,7 @@ export class Posts {
       throw this.handleError(error);
     }
   }
- 
+
   private handleError(error: any): Error {
     if (error.response && error.response.data && error.response.data.error) {
       return new Error(error.response.data.error);

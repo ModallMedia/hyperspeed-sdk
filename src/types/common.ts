@@ -58,6 +58,7 @@ export type HyperspeedContent<T> = {
   created_at: string;
   author?: AuthorItem;
   content_category: string[];
+  collection?: HyperspeedCollection;
   content_categories: Category[];
   description: string;
   id: number;
