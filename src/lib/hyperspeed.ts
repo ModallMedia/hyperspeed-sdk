@@ -12,6 +12,7 @@ import {
   CollectionsV3,
   CommentsV3,
   ContentV3,
+  LinksV3,
 } from "./v3/v3";
 
 interface HyperspeedConfig {
@@ -59,11 +60,12 @@ export class HyperspeedV3 {
   comments: CommentsV3;
   authors: AuthorsV3;
   categories: CategoriesV3;
+  links: LinksV3;
 
   constructor(config: HyperspeedConfig) {
     this.api_key = config.api_key;
     this.organization = config.organization;
-
+    this.links = new LinksV3(this.api_key, this.organization);
     this.collections = new CollectionsV3(this.api_key, this.organization);
     this.authors = new AuthorsV3(this.api_key, this.organization);
     this.content = new ContentV3(this.api_key, this.organization);

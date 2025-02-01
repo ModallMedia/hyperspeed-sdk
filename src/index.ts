@@ -11,8 +11,9 @@ import {
 } from "./types/common";
 import { MessagePayload, MessageResponse } from "./lib/messages";
 import { CommentPayload } from "./lib/comments";
-import { Prisma } from "./lib/prisma-types";
 import { HyperspeedV3 } from "./lib/hyperspeed";
+import { HyperspeedV2 } from "./lib/hyperspeed";
+export { HyperspeedV2 };
 export default HyperspeedV3;
 export type {
   HyperspeedDataImage,

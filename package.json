@@ -6,7 +6,7 @@
     "dist"
   ],
   "description": "Javascript client library for the Hyperspeed API",
-  "version": "1.4.41",
+  "version": "1.4.5",
   "license": "MIT",
   "type": "module",
   "publishConfig": {
@@ -19,6 +19,7 @@
   "keywords": [],
   "author": "Modall",
   "dependencies": {
+    "@hyperspeed/prisma-types": "^0.0.2",
     "axios": "^1.7.8",
     "supports-color": "^8.1.1"
   },
