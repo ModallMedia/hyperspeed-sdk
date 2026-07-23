@@ -1,42 +1,44 @@
 {
-  "name": "@hyperspeed/api",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "description": "Javascript client library for the Hyperspeed API",
-  "version": "1.4.7",
-  "license": "MIT",
-  "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "tsc && babel src --out-dir dist --extensions \".ts,.tsx\"",
-    "postbuild": "npm publish"
-  },
-  "keywords": [],
-  "author": "Modall",
-  "dependencies": {
-    "@hyperspeed/prisma-types": "^0.0.2",
-    "axios": "^1.12.0",
-    "supports-color": "^8.1.1"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.25.9",
-    "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/preset-typescript": "^7.26.0",
-    "@types/node": "^22.10.0",
-    "typescript": "^5.7.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ModallMedia/hyperspeed-sdk.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ModallMedia/hyperspeed-sdk/issues"
-  },
-  "homepage": "https://github.com/ModallMedia/hyperspeed-sdk#readme"
+	"name": "@hyperspeed/api",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"description": "Javascript client library for the Hyperspeed API",
+	"version": "1.4.8",
+	"license": "MIT",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsc && babel src --out-dir dist --extensions \".ts,.tsx\" --ignore \"src/lib/prisma-types/**\" && mkdir -p dist/lib/prisma-types && cp src/lib/prisma-types/index.d.ts dist/lib/prisma-types/index.d.ts",
+		"postbuild": "npm publish",
+		"test:content": "tsx scripts/test-content.ts"
+	},
+	"keywords": [],
+	"author": "Modall",
+	"dependencies": {
+		"@prisma/client": "5.22.0",
+		"axios": "^1.12.0",
+		"supports-color": "^8.1.1"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.25.9",
+		"@babel/core": "^7.26.0",
+		"@babel/preset-env": "^7.26.0",
+		"@babel/preset-typescript": "^7.26.0",
+		"@types/node": "^22.10.0",
+		"tsx": "^4.23.1",
+		"typescript": "^5.7.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ModallMedia/hyperspeed-sdk.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ModallMedia/hyperspeed-sdk/issues"
+	},
+	"homepage": "https://github.com/ModallMedia/hyperspeed-sdk#readme"
 }
