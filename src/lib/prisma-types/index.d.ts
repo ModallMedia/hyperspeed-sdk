@@ -39,6 +39,11 @@ export type form_field = $Result.DefaultSelection<Prisma.$form_fieldPayload>
  */
 export type author = $Result.DefaultSelection<Prisma.$authorPayload>
 /**
+ * Model author_social
+ * 
+ */
+export type author_social = $Result.DefaultSelection<Prisma.$author_socialPayload>
+/**
  * Model Comment
  * 
  */
@@ -365,6 +370,16 @@ export class PrismaClient<
     * ```
     */
   get author(): Prisma.authorDelegate<ExtArgs>;
+
+  /**
+   * `prisma.author_social`: Exposes CRUD operations for the **author_social** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Author_socials
+    * const author_socials = await prisma.author_social.findMany()
+    * ```
+    */
+  get author_social(): Prisma.author_socialDelegate<ExtArgs>;
 
   /**
    * `prisma.comment`: Exposes CRUD operations for the **Comment** model.
@@ -1051,6 +1066,7 @@ export namespace Prisma {
     Content: 'Content',
     form_field: 'form_field',
     author: 'author',
+    author_social: 'author_social',
     Comment: 'Comment',
     Field: 'Field',
     ContentTemplateInstance: 'ContentTemplateInstance',
@@ -1090,7 +1106,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "collection" | "category" | "content" | "form_field" | "author" | "comment" | "field" | "contentTemplateInstance" | "template" | "templateInstance" | "users" | "organization" | "org_details" | "userOrganization" | "page" | "invoice" | "subscription" | "messages" | "thread" | "threadMessage" | "run" | "imageGenerationBilling" | "usage" | "completionUsage" | "media" | "linkPage" | "struct" | "struct_set" | "struct_set_instance"
+      modelProps: "collection" | "category" | "content" | "form_field" | "author" | "author_social" | "comment" | "field" | "contentTemplateInstance" | "template" | "templateInstance" | "users" | "organization" | "org_details" | "userOrganization" | "page" | "invoice" | "subscription" | "messages" | "thread" | "threadMessage" | "run" | "imageGenerationBilling" | "usage" | "completionUsage" | "media" | "linkPage" | "struct" | "struct_set" | "struct_set_instance"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1441,6 +1457,76 @@ export namespace Prisma {
           count: {
             args: Prisma.authorCountArgs<ExtArgs>
             result: $Utils.Optional<AuthorCountAggregateOutputType> | number
+          }
+        }
+      }
+      author_social: {
+        payload: Prisma.$author_socialPayload<ExtArgs>
+        fields: Prisma.author_socialFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.author_socialFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.author_socialFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>
+          }
+          findFirst: {
+            args: Prisma.author_socialFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.author_socialFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>
+          }
+          findMany: {
+            args: Prisma.author_socialFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>[]
+          }
+          create: {
+            args: Prisma.author_socialCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>
+          }
+          createMany: {
+            args: Prisma.author_socialCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.author_socialCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>[]
+          }
+          delete: {
+            args: Prisma.author_socialDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>
+          }
+          update: {
+            args: Prisma.author_socialUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>
+          }
+          deleteMany: {
+            args: Prisma.author_socialDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.author_socialUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.author_socialUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$author_socialPayload>
+          }
+          aggregate: {
+            args: Prisma.Author_socialAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAuthor_social>
+          }
+          groupBy: {
+            args: Prisma.author_socialGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Author_socialGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.author_socialCountArgs<ExtArgs>
+            result: $Utils.Optional<Author_socialCountAggregateOutputType> | number
           }
         }
       }
@@ -3442,10 +3528,12 @@ export namespace Prisma {
 
   export type AuthorCountOutputType = {
     content: number
+    socials: number
   }
 
   export type AuthorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     content?: boolean | AuthorCountOutputTypeCountContentArgs
+    socials?: boolean | AuthorCountOutputTypeCountSocialsArgs
   }
 
   // Custom InputTypes
@@ -3464,6 +3552,13 @@ export namespace Prisma {
    */
   export type AuthorCountOutputTypeCountContentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ContentWhereInput
+  }
+
+  /**
+   * AuthorCountOutputType without action
+   */
+  export type AuthorCountOutputTypeCountSocialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: author_socialWhereInput
   }
 
 
@@ -8995,6 +9090,7 @@ export namespace Prisma {
     media_id?: boolean
     slug?: boolean
     content?: boolean | author$contentArgs<ExtArgs>
+    socials?: boolean | author$socialsArgs<ExtArgs>
     featured_image?: boolean | MediaDefaultArgs<ExtArgs>
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
     _count?: boolean | AuthorCountOutputTypeDefaultArgs<ExtArgs>
@@ -9026,6 +9122,7 @@ export namespace Prisma {
 
   export type authorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     content?: boolean | author$contentArgs<ExtArgs>
+    socials?: boolean | author$socialsArgs<ExtArgs>
     featured_image?: boolean | MediaDefaultArgs<ExtArgs>
     organization?: boolean | OrganizationDefaultArgs<ExtArgs>
     _count?: boolean | AuthorCountOutputTypeDefaultArgs<ExtArgs>
@@ -9039,6 +9136,7 @@ export namespace Prisma {
     name: "author"
     objects: {
       content: Prisma.$ContentPayload<ExtArgs>[]
+      socials: Prisma.$author_socialPayload<ExtArgs>[]
       featured_image: Prisma.$MediaPayload<ExtArgs>
       organization: Prisma.$OrganizationPayload<ExtArgs>
     }
@@ -9416,6 +9514,7 @@ export namespace Prisma {
   export interface Prisma__authorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     content<T extends author$contentArgs<ExtArgs> = {}>(args?: Subset<T, author$contentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ContentPayload<ExtArgs>, T, "findMany"> | Null>
+    socials<T extends author$socialsArgs<ExtArgs> = {}>(args?: Subset<T, author$socialsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "findMany"> | Null>
     featured_image<T extends MediaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MediaDefaultArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     organization<T extends OrganizationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, OrganizationDefaultArgs<ExtArgs>>): Prisma__OrganizationClient<$Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
@@ -9793,6 +9892,26 @@ export namespace Prisma {
   }
 
   /**
+   * author.socials
+   */
+  export type author$socialsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    where?: author_socialWhereInput
+    orderBy?: author_socialOrderByWithRelationInput | author_socialOrderByWithRelationInput[]
+    cursor?: author_socialWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Author_socialScalarFieldEnum | Author_socialScalarFieldEnum[]
+  }
+
+  /**
    * author without action
    */
   export type authorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -9804,6 +9923,989 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: authorInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model author_social
+   */
+
+  export type AggregateAuthor_social = {
+    _count: Author_socialCountAggregateOutputType | null
+    _avg: Author_socialAvgAggregateOutputType | null
+    _sum: Author_socialSumAggregateOutputType | null
+    _min: Author_socialMinAggregateOutputType | null
+    _max: Author_socialMaxAggregateOutputType | null
+  }
+
+  export type Author_socialAvgAggregateOutputType = {
+    id: number | null
+    author_id: number | null
+  }
+
+  export type Author_socialSumAggregateOutputType = {
+    id: number | null
+    author_id: number | null
+  }
+
+  export type Author_socialMinAggregateOutputType = {
+    id: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    platform: string | null
+    link: string | null
+    author_id: number | null
+  }
+
+  export type Author_socialMaxAggregateOutputType = {
+    id: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    platform: string | null
+    link: string | null
+    author_id: number | null
+  }
+
+  export type Author_socialCountAggregateOutputType = {
+    id: number
+    created_at: number
+    updated_at: number
+    platform: number
+    link: number
+    author_id: number
+    _all: number
+  }
+
+
+  export type Author_socialAvgAggregateInputType = {
+    id?: true
+    author_id?: true
+  }
+
+  export type Author_socialSumAggregateInputType = {
+    id?: true
+    author_id?: true
+  }
+
+  export type Author_socialMinAggregateInputType = {
+    id?: true
+    created_at?: true
+    updated_at?: true
+    platform?: true
+    link?: true
+    author_id?: true
+  }
+
+  export type Author_socialMaxAggregateInputType = {
+    id?: true
+    created_at?: true
+    updated_at?: true
+    platform?: true
+    link?: true
+    author_id?: true
+  }
+
+  export type Author_socialCountAggregateInputType = {
+    id?: true
+    created_at?: true
+    updated_at?: true
+    platform?: true
+    link?: true
+    author_id?: true
+    _all?: true
+  }
+
+  export type Author_socialAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which author_social to aggregate.
+     */
+    where?: author_socialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of author_socials to fetch.
+     */
+    orderBy?: author_socialOrderByWithRelationInput | author_socialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: author_socialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` author_socials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` author_socials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned author_socials
+    **/
+    _count?: true | Author_socialCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Author_socialAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Author_socialSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Author_socialMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Author_socialMaxAggregateInputType
+  }
+
+  export type GetAuthor_socialAggregateType<T extends Author_socialAggregateArgs> = {
+        [P in keyof T & keyof AggregateAuthor_social]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAuthor_social[P]>
+      : GetScalarType<T[P], AggregateAuthor_social[P]>
+  }
+
+
+
+
+  export type author_socialGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: author_socialWhereInput
+    orderBy?: author_socialOrderByWithAggregationInput | author_socialOrderByWithAggregationInput[]
+    by: Author_socialScalarFieldEnum[] | Author_socialScalarFieldEnum
+    having?: author_socialScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Author_socialCountAggregateInputType | true
+    _avg?: Author_socialAvgAggregateInputType
+    _sum?: Author_socialSumAggregateInputType
+    _min?: Author_socialMinAggregateInputType
+    _max?: Author_socialMaxAggregateInputType
+  }
+
+  export type Author_socialGroupByOutputType = {
+    id: number
+    created_at: Date
+    updated_at: Date
+    platform: string
+    link: string
+    author_id: number
+    _count: Author_socialCountAggregateOutputType | null
+    _avg: Author_socialAvgAggregateOutputType | null
+    _sum: Author_socialSumAggregateOutputType | null
+    _min: Author_socialMinAggregateOutputType | null
+    _max: Author_socialMaxAggregateOutputType | null
+  }
+
+  type GetAuthor_socialGroupByPayload<T extends author_socialGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Author_socialGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Author_socialGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Author_socialGroupByOutputType[P]>
+            : GetScalarType<T[P], Author_socialGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type author_socialSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    platform?: boolean
+    link?: boolean
+    author_id?: boolean
+    author?: boolean | authorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["author_social"]>
+
+  export type author_socialSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    platform?: boolean
+    link?: boolean
+    author_id?: boolean
+    author?: boolean | authorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["author_social"]>
+
+  export type author_socialSelectScalar = {
+    id?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    platform?: boolean
+    link?: boolean
+    author_id?: boolean
+  }
+
+  export type author_socialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | authorDefaultArgs<ExtArgs>
+  }
+  export type author_socialIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    author?: boolean | authorDefaultArgs<ExtArgs>
+  }
+
+  export type $author_socialPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "author_social"
+    objects: {
+      author: Prisma.$authorPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      created_at: Date
+      updated_at: Date
+      platform: string
+      link: string
+      author_id: number
+    }, ExtArgs["result"]["author_social"]>
+    composites: {}
+  }
+
+  type author_socialGetPayload<S extends boolean | null | undefined | author_socialDefaultArgs> = $Result.GetResult<Prisma.$author_socialPayload, S>
+
+  type author_socialCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<author_socialFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: Author_socialCountAggregateInputType | true
+    }
+
+  export interface author_socialDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['author_social'], meta: { name: 'author_social' } }
+    /**
+     * Find zero or one Author_social that matches the filter.
+     * @param {author_socialFindUniqueArgs} args - Arguments to find a Author_social
+     * @example
+     * // Get one Author_social
+     * const author_social = await prisma.author_social.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends author_socialFindUniqueArgs>(args: SelectSubset<T, author_socialFindUniqueArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
+
+    /**
+     * Find one Author_social that matches the filter or throw an error with `error.code='P2025'` 
+     * if no matches were found.
+     * @param {author_socialFindUniqueOrThrowArgs} args - Arguments to find a Author_social
+     * @example
+     * // Get one Author_social
+     * const author_social = await prisma.author_social.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends author_socialFindUniqueOrThrowArgs>(args: SelectSubset<T, author_socialFindUniqueOrThrowArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
+
+    /**
+     * Find the first Author_social that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {author_socialFindFirstArgs} args - Arguments to find a Author_social
+     * @example
+     * // Get one Author_social
+     * const author_social = await prisma.author_social.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends author_socialFindFirstArgs>(args?: SelectSubset<T, author_socialFindFirstArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
+
+    /**
+     * Find the first Author_social that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {author_socialFindFirstOrThrowArgs} args - Arguments to find a Author_social
+     * @example
+     * // Get one Author_social
+     * const author_social = await prisma.author_social.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends author_socialFindFirstOrThrowArgs>(args?: SelectSubset<T, author_socialFindFirstOrThrowArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
+
+    /**
+     * Find zero or more Author_socials that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {author_socialFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Author_socials
+     * const author_socials = await prisma.author_social.findMany()
+     * 
+     * // Get first 10 Author_socials
+     * const author_socials = await prisma.author_social.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const author_socialWithIdOnly = await prisma.author_social.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends author_socialFindManyArgs>(args?: SelectSubset<T, author_socialFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "findMany">>
+
+    /**
+     * Create a Author_social.
+     * @param {author_socialCreateArgs} args - Arguments to create a Author_social.
+     * @example
+     * // Create one Author_social
+     * const Author_social = await prisma.author_social.create({
+     *   data: {
+     *     // ... data to create a Author_social
+     *   }
+     * })
+     * 
+     */
+    create<T extends author_socialCreateArgs>(args: SelectSubset<T, author_socialCreateArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "create">, never, ExtArgs>
+
+    /**
+     * Create many Author_socials.
+     * @param {author_socialCreateManyArgs} args - Arguments to create many Author_socials.
+     * @example
+     * // Create many Author_socials
+     * const author_social = await prisma.author_social.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends author_socialCreateManyArgs>(args?: SelectSubset<T, author_socialCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Author_socials and returns the data saved in the database.
+     * @param {author_socialCreateManyAndReturnArgs} args - Arguments to create many Author_socials.
+     * @example
+     * // Create many Author_socials
+     * const author_social = await prisma.author_social.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Author_socials and only return the `id`
+     * const author_socialWithIdOnly = await prisma.author_social.createManyAndReturn({ 
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends author_socialCreateManyAndReturnArgs>(args?: SelectSubset<T, author_socialCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "createManyAndReturn">>
+
+    /**
+     * Delete a Author_social.
+     * @param {author_socialDeleteArgs} args - Arguments to delete one Author_social.
+     * @example
+     * // Delete one Author_social
+     * const Author_social = await prisma.author_social.delete({
+     *   where: {
+     *     // ... filter to delete one Author_social
+     *   }
+     * })
+     * 
+     */
+    delete<T extends author_socialDeleteArgs>(args: SelectSubset<T, author_socialDeleteArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "delete">, never, ExtArgs>
+
+    /**
+     * Update one Author_social.
+     * @param {author_socialUpdateArgs} args - Arguments to update one Author_social.
+     * @example
+     * // Update one Author_social
+     * const author_social = await prisma.author_social.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends author_socialUpdateArgs>(args: SelectSubset<T, author_socialUpdateArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "update">, never, ExtArgs>
+
+    /**
+     * Delete zero or more Author_socials.
+     * @param {author_socialDeleteManyArgs} args - Arguments to filter Author_socials to delete.
+     * @example
+     * // Delete a few Author_socials
+     * const { count } = await prisma.author_social.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends author_socialDeleteManyArgs>(args?: SelectSubset<T, author_socialDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Author_socials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {author_socialUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Author_socials
+     * const author_social = await prisma.author_social.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends author_socialUpdateManyArgs>(args: SelectSubset<T, author_socialUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Author_social.
+     * @param {author_socialUpsertArgs} args - Arguments to update or create a Author_social.
+     * @example
+     * // Update or create a Author_social
+     * const author_social = await prisma.author_social.upsert({
+     *   create: {
+     *     // ... data to create a Author_social
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Author_social we want to update
+     *   }
+     * })
+     */
+    upsert<T extends author_socialUpsertArgs>(args: SelectSubset<T, author_socialUpsertArgs<ExtArgs>>): Prisma__author_socialClient<$Result.GetResult<Prisma.$author_socialPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
+
+
+    /**
+     * Count the number of Author_socials.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {author_socialCountArgs} args - Arguments to filter Author_socials to count.
+     * @example
+     * // Count the number of Author_socials
+     * const count = await prisma.author_social.count({
+     *   where: {
+     *     // ... the filter for the Author_socials we want to count
+     *   }
+     * })
+    **/
+    count<T extends author_socialCountArgs>(
+      args?: Subset<T, author_socialCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Author_socialCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Author_social.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Author_socialAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Author_socialAggregateArgs>(args: Subset<T, Author_socialAggregateArgs>): Prisma.PrismaPromise<GetAuthor_socialAggregateType<T>>
+
+    /**
+     * Group by Author_social.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {author_socialGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends author_socialGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: author_socialGroupByArgs['orderBy'] }
+        : { orderBy?: author_socialGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, author_socialGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAuthor_socialGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the author_social model
+   */
+  readonly fields: author_socialFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for author_social.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__author_socialClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    author<T extends authorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, authorDefaultArgs<ExtArgs>>): Prisma__authorClient<$Result.GetResult<Prisma.$authorPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the author_social model
+   */ 
+  interface author_socialFieldRefs {
+    readonly id: FieldRef<"author_social", 'Int'>
+    readonly created_at: FieldRef<"author_social", 'DateTime'>
+    readonly updated_at: FieldRef<"author_social", 'DateTime'>
+    readonly platform: FieldRef<"author_social", 'String'>
+    readonly link: FieldRef<"author_social", 'String'>
+    readonly author_id: FieldRef<"author_social", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * author_social findUnique
+   */
+  export type author_socialFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * Filter, which author_social to fetch.
+     */
+    where: author_socialWhereUniqueInput
+  }
+
+  /**
+   * author_social findUniqueOrThrow
+   */
+  export type author_socialFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * Filter, which author_social to fetch.
+     */
+    where: author_socialWhereUniqueInput
+  }
+
+  /**
+   * author_social findFirst
+   */
+  export type author_socialFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * Filter, which author_social to fetch.
+     */
+    where?: author_socialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of author_socials to fetch.
+     */
+    orderBy?: author_socialOrderByWithRelationInput | author_socialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for author_socials.
+     */
+    cursor?: author_socialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` author_socials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` author_socials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of author_socials.
+     */
+    distinct?: Author_socialScalarFieldEnum | Author_socialScalarFieldEnum[]
+  }
+
+  /**
+   * author_social findFirstOrThrow
+   */
+  export type author_socialFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * Filter, which author_social to fetch.
+     */
+    where?: author_socialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of author_socials to fetch.
+     */
+    orderBy?: author_socialOrderByWithRelationInput | author_socialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for author_socials.
+     */
+    cursor?: author_socialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` author_socials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` author_socials.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of author_socials.
+     */
+    distinct?: Author_socialScalarFieldEnum | Author_socialScalarFieldEnum[]
+  }
+
+  /**
+   * author_social findMany
+   */
+  export type author_socialFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * Filter, which author_socials to fetch.
+     */
+    where?: author_socialWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of author_socials to fetch.
+     */
+    orderBy?: author_socialOrderByWithRelationInput | author_socialOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing author_socials.
+     */
+    cursor?: author_socialWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` author_socials from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` author_socials.
+     */
+    skip?: number
+    distinct?: Author_socialScalarFieldEnum | Author_socialScalarFieldEnum[]
+  }
+
+  /**
+   * author_social create
+   */
+  export type author_socialCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * The data needed to create a author_social.
+     */
+    data: XOR<author_socialCreateInput, author_socialUncheckedCreateInput>
+  }
+
+  /**
+   * author_social createMany
+   */
+  export type author_socialCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many author_socials.
+     */
+    data: author_socialCreateManyInput | author_socialCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * author_social createManyAndReturn
+   */
+  export type author_socialCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * The data used to create many author_socials.
+     */
+    data: author_socialCreateManyInput | author_socialCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * author_social update
+   */
+  export type author_socialUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * The data needed to update a author_social.
+     */
+    data: XOR<author_socialUpdateInput, author_socialUncheckedUpdateInput>
+    /**
+     * Choose, which author_social to update.
+     */
+    where: author_socialWhereUniqueInput
+  }
+
+  /**
+   * author_social updateMany
+   */
+  export type author_socialUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update author_socials.
+     */
+    data: XOR<author_socialUpdateManyMutationInput, author_socialUncheckedUpdateManyInput>
+    /**
+     * Filter which author_socials to update
+     */
+    where?: author_socialWhereInput
+  }
+
+  /**
+   * author_social upsert
+   */
+  export type author_socialUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * The filter to search for the author_social to update in case it exists.
+     */
+    where: author_socialWhereUniqueInput
+    /**
+     * In case the author_social found by the `where` argument doesn't exist, create a new author_social with this data.
+     */
+    create: XOR<author_socialCreateInput, author_socialUncheckedCreateInput>
+    /**
+     * In case the author_social was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<author_socialUpdateInput, author_socialUncheckedUpdateInput>
+  }
+
+  /**
+   * author_social delete
+   */
+  export type author_socialDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
+    /**
+     * Filter which author_social to delete.
+     */
+    where: author_socialWhereUniqueInput
+  }
+
+  /**
+   * author_social deleteMany
+   */
+  export type author_socialDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which author_socials to delete
+     */
+    where?: author_socialWhereInput
+  }
+
+  /**
+   * author_social without action
+   */
+  export type author_socialDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the author_social
+     */
+    select?: author_socialSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: author_socialInclude<ExtArgs> | null
   }
 
 
@@ -35455,6 +36557,18 @@ export namespace Prisma {
   export type AuthorScalarFieldEnum = (typeof AuthorScalarFieldEnum)[keyof typeof AuthorScalarFieldEnum]
 
 
+  export const Author_socialScalarFieldEnum: {
+    id: 'id',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    platform: 'platform',
+    link: 'link',
+    author_id: 'author_id'
+  };
+
+  export type Author_socialScalarFieldEnum = (typeof Author_socialScalarFieldEnum)[keyof typeof Author_socialScalarFieldEnum]
+
+
   export const CommentScalarFieldEnum: {
     id: 'id',
     text: 'text',
@@ -36456,6 +37570,7 @@ export namespace Prisma {
     media_id?: IntFilter<"author"> | number
     slug?: StringFilter<"author"> | string
     content?: ContentListRelationFilter
+    socials?: Author_socialListRelationFilter
     featured_image?: XOR<MediaRelationFilter, MediaWhereInput>
     organization?: XOR<OrganizationRelationFilter, OrganizationWhereInput>
   }
@@ -36470,6 +37585,7 @@ export namespace Prisma {
     media_id?: SortOrder
     slug?: SortOrder
     content?: ContentOrderByRelationAggregateInput
+    socials?: author_socialOrderByRelationAggregateInput
     featured_image?: MediaOrderByWithRelationInput
     organization?: OrganizationOrderByWithRelationInput
   }
@@ -36488,6 +37604,7 @@ export namespace Prisma {
     media_id?: IntFilter<"author"> | number
     slug?: StringFilter<"author"> | string
     content?: ContentListRelationFilter
+    socials?: Author_socialListRelationFilter
     featured_image?: XOR<MediaRelationFilter, MediaWhereInput>
     organization?: XOR<OrganizationRelationFilter, OrganizationWhereInput>
   }, "id" | "slug_organization_id">
@@ -36520,6 +37637,68 @@ export namespace Prisma {
     organization_id?: IntWithAggregatesFilter<"author"> | number
     media_id?: IntWithAggregatesFilter<"author"> | number
     slug?: StringWithAggregatesFilter<"author"> | string
+  }
+
+  export type author_socialWhereInput = {
+    AND?: author_socialWhereInput | author_socialWhereInput[]
+    OR?: author_socialWhereInput[]
+    NOT?: author_socialWhereInput | author_socialWhereInput[]
+    id?: IntFilter<"author_social"> | number
+    created_at?: DateTimeFilter<"author_social"> | Date | string
+    updated_at?: DateTimeFilter<"author_social"> | Date | string
+    platform?: StringFilter<"author_social"> | string
+    link?: StringFilter<"author_social"> | string
+    author_id?: IntFilter<"author_social"> | number
+    author?: XOR<AuthorRelationFilter, authorWhereInput>
+  }
+
+  export type author_socialOrderByWithRelationInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    platform?: SortOrder
+    link?: SortOrder
+    author_id?: SortOrder
+    author?: authorOrderByWithRelationInput
+  }
+
+  export type author_socialWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: author_socialWhereInput | author_socialWhereInput[]
+    OR?: author_socialWhereInput[]
+    NOT?: author_socialWhereInput | author_socialWhereInput[]
+    created_at?: DateTimeFilter<"author_social"> | Date | string
+    updated_at?: DateTimeFilter<"author_social"> | Date | string
+    platform?: StringFilter<"author_social"> | string
+    link?: StringFilter<"author_social"> | string
+    author_id?: IntFilter<"author_social"> | number
+    author?: XOR<AuthorRelationFilter, authorWhereInput>
+  }, "id">
+
+  export type author_socialOrderByWithAggregationInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    platform?: SortOrder
+    link?: SortOrder
+    author_id?: SortOrder
+    _count?: author_socialCountOrderByAggregateInput
+    _avg?: author_socialAvgOrderByAggregateInput
+    _max?: author_socialMaxOrderByAggregateInput
+    _min?: author_socialMinOrderByAggregateInput
+    _sum?: author_socialSumOrderByAggregateInput
+  }
+
+  export type author_socialScalarWhereWithAggregatesInput = {
+    AND?: author_socialScalarWhereWithAggregatesInput | author_socialScalarWhereWithAggregatesInput[]
+    OR?: author_socialScalarWhereWithAggregatesInput[]
+    NOT?: author_socialScalarWhereWithAggregatesInput | author_socialScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"author_social"> | number
+    created_at?: DateTimeWithAggregatesFilter<"author_social"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"author_social"> | Date | string
+    platform?: StringWithAggregatesFilter<"author_social"> | string
+    link?: StringWithAggregatesFilter<"author_social"> | string
+    author_id?: IntWithAggregatesFilter<"author_social"> | number
   }
 
   export type CommentWhereInput = {
@@ -39039,6 +40218,7 @@ export namespace Prisma {
     description: string
     slug: string
     content?: ContentCreateNestedManyWithoutAuthorInput
+    socials?: author_socialCreateNestedManyWithoutAuthorInput
     featured_image: MediaCreateNestedOneWithoutAuthorInput
     organization: OrganizationCreateNestedOneWithoutAuthorsInput
   }
@@ -39053,6 +40233,7 @@ export namespace Prisma {
     media_id: number
     slug: string
     content?: ContentUncheckedCreateNestedManyWithoutAuthorInput
+    socials?: author_socialUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type authorUpdateInput = {
@@ -39062,6 +40243,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     content?: ContentUpdateManyWithoutAuthorNestedInput
+    socials?: author_socialUpdateManyWithoutAuthorNestedInput
     featured_image?: MediaUpdateOneRequiredWithoutAuthorNestedInput
     organization?: OrganizationUpdateOneRequiredWithoutAuthorsNestedInput
   }
@@ -39076,6 +40258,7 @@ export namespace Prisma {
     media_id?: IntFieldUpdateOperationsInput | number
     slug?: StringFieldUpdateOperationsInput | string
     content?: ContentUncheckedUpdateManyWithoutAuthorNestedInput
+    socials?: author_socialUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type authorCreateManyInput = {
@@ -39106,6 +40289,65 @@ export namespace Prisma {
     organization_id?: IntFieldUpdateOperationsInput | number
     media_id?: IntFieldUpdateOperationsInput | number
     slug?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type author_socialCreateInput = {
+    created_at?: Date | string
+    updated_at?: Date | string
+    platform: string
+    link: string
+    author: authorCreateNestedOneWithoutSocialsInput
+  }
+
+  export type author_socialUncheckedCreateInput = {
+    id?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    platform: string
+    link: string
+    author_id: number
+  }
+
+  export type author_socialUpdateInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    platform?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    author?: authorUpdateOneRequiredWithoutSocialsNestedInput
+  }
+
+  export type author_socialUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    platform?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    author_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type author_socialCreateManyInput = {
+    id?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    platform: string
+    link: string
+    author_id: number
+  }
+
+  export type author_socialUpdateManyMutationInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    platform?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type author_socialUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    platform?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+    author_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type CommentCreateInput = {
@@ -41834,9 +43076,19 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type Author_socialListRelationFilter = {
+    every?: author_socialWhereInput
+    some?: author_socialWhereInput
+    none?: author_socialWhereInput
+  }
+
   export type MediaRelationFilter = {
     is?: MediaWhereInput
     isNot?: MediaWhereInput
+  }
+
+  export type author_socialOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type authorSlugOrganization_idCompoundUniqueInput = {
@@ -41887,6 +43139,48 @@ export namespace Prisma {
     id?: SortOrder
     organization_id?: SortOrder
     media_id?: SortOrder
+  }
+
+  export type AuthorRelationFilter = {
+    is?: authorWhereInput
+    isNot?: authorWhereInput
+  }
+
+  export type author_socialCountOrderByAggregateInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    platform?: SortOrder
+    link?: SortOrder
+    author_id?: SortOrder
+  }
+
+  export type author_socialAvgOrderByAggregateInput = {
+    id?: SortOrder
+    author_id?: SortOrder
+  }
+
+  export type author_socialMaxOrderByAggregateInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    platform?: SortOrder
+    link?: SortOrder
+    author_id?: SortOrder
+  }
+
+  export type author_socialMinOrderByAggregateInput = {
+    id?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    platform?: SortOrder
+    link?: SortOrder
+    author_id?: SortOrder
+  }
+
+  export type author_socialSumOrderByAggregateInput = {
+    id?: SortOrder
+    author_id?: SortOrder
   }
 
   export type ContentRelationFilter = {
@@ -43984,6 +45278,13 @@ export namespace Prisma {
     connect?: ContentWhereUniqueInput | ContentWhereUniqueInput[]
   }
 
+  export type author_socialCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<author_socialCreateWithoutAuthorInput, author_socialUncheckedCreateWithoutAuthorInput> | author_socialCreateWithoutAuthorInput[] | author_socialUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: author_socialCreateOrConnectWithoutAuthorInput | author_socialCreateOrConnectWithoutAuthorInput[]
+    createMany?: author_socialCreateManyAuthorInputEnvelope
+    connect?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+  }
+
   export type MediaCreateNestedOneWithoutAuthorInput = {
     create?: XOR<MediaCreateWithoutAuthorInput, MediaUncheckedCreateWithoutAuthorInput>
     connectOrCreate?: MediaCreateOrConnectWithoutAuthorInput
@@ -44003,6 +45304,13 @@ export namespace Prisma {
     connect?: ContentWhereUniqueInput | ContentWhereUniqueInput[]
   }
 
+  export type author_socialUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<author_socialCreateWithoutAuthorInput, author_socialUncheckedCreateWithoutAuthorInput> | author_socialCreateWithoutAuthorInput[] | author_socialUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: author_socialCreateOrConnectWithoutAuthorInput | author_socialCreateOrConnectWithoutAuthorInput[]
+    createMany?: author_socialCreateManyAuthorInputEnvelope
+    connect?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+  }
+
   export type ContentUpdateManyWithoutAuthorNestedInput = {
     create?: XOR<ContentCreateWithoutAuthorInput, ContentUncheckedCreateWithoutAuthorInput> | ContentCreateWithoutAuthorInput[] | ContentUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: ContentCreateOrConnectWithoutAuthorInput | ContentCreateOrConnectWithoutAuthorInput[]
@@ -44015,6 +45323,20 @@ export namespace Prisma {
     update?: ContentUpdateWithWhereUniqueWithoutAuthorInput | ContentUpdateWithWhereUniqueWithoutAuthorInput[]
     updateMany?: ContentUpdateManyWithWhereWithoutAuthorInput | ContentUpdateManyWithWhereWithoutAuthorInput[]
     deleteMany?: ContentScalarWhereInput | ContentScalarWhereInput[]
+  }
+
+  export type author_socialUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<author_socialCreateWithoutAuthorInput, author_socialUncheckedCreateWithoutAuthorInput> | author_socialCreateWithoutAuthorInput[] | author_socialUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: author_socialCreateOrConnectWithoutAuthorInput | author_socialCreateOrConnectWithoutAuthorInput[]
+    upsert?: author_socialUpsertWithWhereUniqueWithoutAuthorInput | author_socialUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: author_socialCreateManyAuthorInputEnvelope
+    set?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    disconnect?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    delete?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    connect?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    update?: author_socialUpdateWithWhereUniqueWithoutAuthorInput | author_socialUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: author_socialUpdateManyWithWhereWithoutAuthorInput | author_socialUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: author_socialScalarWhereInput | author_socialScalarWhereInput[]
   }
 
   export type MediaUpdateOneRequiredWithoutAuthorNestedInput = {
@@ -44045,6 +45367,34 @@ export namespace Prisma {
     update?: ContentUpdateWithWhereUniqueWithoutAuthorInput | ContentUpdateWithWhereUniqueWithoutAuthorInput[]
     updateMany?: ContentUpdateManyWithWhereWithoutAuthorInput | ContentUpdateManyWithWhereWithoutAuthorInput[]
     deleteMany?: ContentScalarWhereInput | ContentScalarWhereInput[]
+  }
+
+  export type author_socialUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<author_socialCreateWithoutAuthorInput, author_socialUncheckedCreateWithoutAuthorInput> | author_socialCreateWithoutAuthorInput[] | author_socialUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: author_socialCreateOrConnectWithoutAuthorInput | author_socialCreateOrConnectWithoutAuthorInput[]
+    upsert?: author_socialUpsertWithWhereUniqueWithoutAuthorInput | author_socialUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: author_socialCreateManyAuthorInputEnvelope
+    set?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    disconnect?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    delete?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    connect?: author_socialWhereUniqueInput | author_socialWhereUniqueInput[]
+    update?: author_socialUpdateWithWhereUniqueWithoutAuthorInput | author_socialUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: author_socialUpdateManyWithWhereWithoutAuthorInput | author_socialUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: author_socialScalarWhereInput | author_socialScalarWhereInput[]
+  }
+
+  export type authorCreateNestedOneWithoutSocialsInput = {
+    create?: XOR<authorCreateWithoutSocialsInput, authorUncheckedCreateWithoutSocialsInput>
+    connectOrCreate?: authorCreateOrConnectWithoutSocialsInput
+    connect?: authorWhereUniqueInput
+  }
+
+  export type authorUpdateOneRequiredWithoutSocialsNestedInput = {
+    create?: XOR<authorCreateWithoutSocialsInput, authorUncheckedCreateWithoutSocialsInput>
+    connectOrCreate?: authorCreateOrConnectWithoutSocialsInput
+    upsert?: authorUpsertWithoutSocialsInput
+    connect?: authorWhereUniqueInput
+    update?: XOR<XOR<authorUpdateToOneWithWhereWithoutSocialsInput, authorUpdateWithoutSocialsInput>, authorUncheckedUpdateWithoutSocialsInput>
   }
 
   export type ContentCreateNestedOneWithoutCommentsInput = {
@@ -47584,6 +48934,7 @@ export namespace Prisma {
     name: string
     description: string
     slug: string
+    socials?: author_socialCreateNestedManyWithoutAuthorInput
     featured_image: MediaCreateNestedOneWithoutAuthorInput
     organization: OrganizationCreateNestedOneWithoutAuthorsInput
   }
@@ -47597,6 +48948,7 @@ export namespace Prisma {
     organization_id: number
     media_id: number
     slug: string
+    socials?: author_socialUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type authorCreateOrConnectWithoutContentInput = {
@@ -47852,6 +49204,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
+    socials?: author_socialUpdateManyWithoutAuthorNestedInput
     featured_image?: MediaUpdateOneRequiredWithoutAuthorNestedInput
     organization?: OrganizationUpdateOneRequiredWithoutAuthorsNestedInput
   }
@@ -47865,6 +49218,7 @@ export namespace Prisma {
     organization_id?: IntFieldUpdateOperationsInput | number
     media_id?: IntFieldUpdateOperationsInput | number
     slug?: StringFieldUpdateOperationsInput | string
+    socials?: author_socialUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CollectionUpsertWithoutContentsInput = {
@@ -48483,6 +49837,31 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type author_socialCreateWithoutAuthorInput = {
+    created_at?: Date | string
+    updated_at?: Date | string
+    platform: string
+    link: string
+  }
+
+  export type author_socialUncheckedCreateWithoutAuthorInput = {
+    id?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    platform: string
+    link: string
+  }
+
+  export type author_socialCreateOrConnectWithoutAuthorInput = {
+    where: author_socialWhereUniqueInput
+    create: XOR<author_socialCreateWithoutAuthorInput, author_socialUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type author_socialCreateManyAuthorInputEnvelope = {
+    data: author_socialCreateManyAuthorInput | author_socialCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type MediaCreateWithoutAuthorInput = {
     url: string
     alt_text?: string
@@ -48625,6 +50004,34 @@ export namespace Prisma {
     data: XOR<ContentUpdateManyMutationInput, ContentUncheckedUpdateManyWithoutAuthorInput>
   }
 
+  export type author_socialUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: author_socialWhereUniqueInput
+    update: XOR<author_socialUpdateWithoutAuthorInput, author_socialUncheckedUpdateWithoutAuthorInput>
+    create: XOR<author_socialCreateWithoutAuthorInput, author_socialUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type author_socialUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: author_socialWhereUniqueInput
+    data: XOR<author_socialUpdateWithoutAuthorInput, author_socialUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type author_socialUpdateManyWithWhereWithoutAuthorInput = {
+    where: author_socialScalarWhereInput
+    data: XOR<author_socialUpdateManyMutationInput, author_socialUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type author_socialScalarWhereInput = {
+    AND?: author_socialScalarWhereInput | author_socialScalarWhereInput[]
+    OR?: author_socialScalarWhereInput[]
+    NOT?: author_socialScalarWhereInput | author_socialScalarWhereInput[]
+    id?: IntFilter<"author_social"> | number
+    created_at?: DateTimeFilter<"author_social"> | Date | string
+    updated_at?: DateTimeFilter<"author_social"> | Date | string
+    platform?: StringFilter<"author_social"> | string
+    link?: StringFilter<"author_social"> | string
+    author_id?: IntFilter<"author_social"> | number
+  }
+
   export type MediaUpsertWithoutAuthorInput = {
     update: XOR<MediaUpdateWithoutAuthorInput, MediaUncheckedUpdateWithoutAuthorInput>
     create: XOR<MediaCreateWithoutAuthorInput, MediaUncheckedCreateWithoutAuthorInput>
@@ -48761,6 +50168,68 @@ export namespace Prisma {
     structs?: structUncheckedUpdateManyWithoutOrganizationNestedInput
     struct_sets?: struct_setUncheckedUpdateManyWithoutOrganizationNestedInput
     struct_set_instances?: struct_set_instanceUncheckedUpdateManyWithoutOrganizationNestedInput
+  }
+
+  export type authorCreateWithoutSocialsInput = {
+    created_at?: Date | string
+    updated_at?: Date | string
+    name: string
+    description: string
+    slug: string
+    content?: ContentCreateNestedManyWithoutAuthorInput
+    featured_image: MediaCreateNestedOneWithoutAuthorInput
+    organization: OrganizationCreateNestedOneWithoutAuthorsInput
+  }
+
+  export type authorUncheckedCreateWithoutSocialsInput = {
+    id?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    name: string
+    description: string
+    organization_id: number
+    media_id: number
+    slug: string
+    content?: ContentUncheckedCreateNestedManyWithoutAuthorInput
+  }
+
+  export type authorCreateOrConnectWithoutSocialsInput = {
+    where: authorWhereUniqueInput
+    create: XOR<authorCreateWithoutSocialsInput, authorUncheckedCreateWithoutSocialsInput>
+  }
+
+  export type authorUpsertWithoutSocialsInput = {
+    update: XOR<authorUpdateWithoutSocialsInput, authorUncheckedUpdateWithoutSocialsInput>
+    create: XOR<authorCreateWithoutSocialsInput, authorUncheckedCreateWithoutSocialsInput>
+    where?: authorWhereInput
+  }
+
+  export type authorUpdateToOneWithWhereWithoutSocialsInput = {
+    where?: authorWhereInput
+    data: XOR<authorUpdateWithoutSocialsInput, authorUncheckedUpdateWithoutSocialsInput>
+  }
+
+  export type authorUpdateWithoutSocialsInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    content?: ContentUpdateManyWithoutAuthorNestedInput
+    featured_image?: MediaUpdateOneRequiredWithoutAuthorNestedInput
+    organization?: OrganizationUpdateOneRequiredWithoutAuthorsNestedInput
+  }
+
+  export type authorUncheckedUpdateWithoutSocialsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    organization_id?: IntFieldUpdateOperationsInput | number
+    media_id?: IntFieldUpdateOperationsInput | number
+    slug?: StringFieldUpdateOperationsInput | string
+    content?: ContentUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type ContentCreateWithoutCommentsInput = {
@@ -50659,6 +52128,7 @@ export namespace Prisma {
     description: string
     slug: string
     content?: ContentCreateNestedManyWithoutAuthorInput
+    socials?: author_socialCreateNestedManyWithoutAuthorInput
     featured_image: MediaCreateNestedOneWithoutAuthorInput
   }
 
@@ -50671,6 +52141,7 @@ export namespace Prisma {
     media_id: number
     slug: string
     content?: ContentUncheckedCreateNestedManyWithoutAuthorInput
+    socials?: author_socialUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type authorCreateOrConnectWithoutOrganizationInput = {
@@ -54235,6 +55706,7 @@ export namespace Prisma {
     description: string
     slug: string
     content?: ContentCreateNestedManyWithoutAuthorInput
+    socials?: author_socialCreateNestedManyWithoutAuthorInput
     organization: OrganizationCreateNestedOneWithoutAuthorsInput
   }
 
@@ -54247,6 +55719,7 @@ export namespace Prisma {
     organization_id: number
     slug: string
     content?: ContentUncheckedCreateNestedManyWithoutAuthorInput
+    socials?: author_socialUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type authorCreateOrConnectWithoutFeatured_imageInput = {
@@ -56282,6 +57755,14 @@ export namespace Prisma {
     content_category?: ContentCreatecontent_categoryInput | string[]
   }
 
+  export type author_socialCreateManyAuthorInput = {
+    id?: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    platform: string
+    link: string
+  }
+
   export type ContentUpdateWithoutAuthorInput = {
     data?: JsonNullValueInput | InputJsonValue
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56342,6 +57823,29 @@ export namespace Prisma {
     organization_id?: NullableIntFieldUpdateOperationsInput | number | null
     featured?: BoolFieldUpdateOperationsInput | boolean
     content_category?: ContentUpdatecontent_categoryInput | string[]
+  }
+
+  export type author_socialUpdateWithoutAuthorInput = {
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    platform?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type author_socialUncheckedUpdateWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    platform?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type author_socialUncheckedUpdateManyWithoutAuthorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    platform?: StringFieldUpdateOperationsInput | string
+    link?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentCreateManyParentInput = {
@@ -57342,6 +58846,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     content?: ContentUpdateManyWithoutAuthorNestedInput
+    socials?: author_socialUpdateManyWithoutAuthorNestedInput
     featured_image?: MediaUpdateOneRequiredWithoutAuthorNestedInput
   }
 
@@ -57354,6 +58859,7 @@ export namespace Prisma {
     media_id?: IntFieldUpdateOperationsInput | number
     slug?: StringFieldUpdateOperationsInput | string
     content?: ContentUncheckedUpdateManyWithoutAuthorNestedInput
+    socials?: author_socialUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type authorUncheckedUpdateManyWithoutOrganizationInput = {
@@ -57770,6 +59276,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     content?: ContentUpdateManyWithoutAuthorNestedInput
+    socials?: author_socialUpdateManyWithoutAuthorNestedInput
     organization?: OrganizationUpdateOneRequiredWithoutAuthorsNestedInput
   }
 
@@ -57782,6 +59289,7 @@ export namespace Prisma {
     organization_id?: IntFieldUpdateOperationsInput | number
     slug?: StringFieldUpdateOperationsInput | string
     content?: ContentUncheckedUpdateManyWithoutAuthorNestedInput
+    socials?: author_socialUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type authorUncheckedUpdateManyWithoutFeatured_imageInput = {
@@ -58064,6 +59572,10 @@ export namespace Prisma {
      * @deprecated Use authorDefaultArgs instead
      */
     export type authorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = authorDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use author_socialDefaultArgs instead
+     */
+    export type author_socialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = author_socialDefaultArgs<ExtArgs>
     /**
      * @deprecated Use CommentDefaultArgs instead
      */
